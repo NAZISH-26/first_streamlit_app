@@ -70,18 +70,31 @@ except URLError as e:
 # Don't run anything past here while we troubleshoot
 streamlit.stop()
 
-# Connecting snowflake
-my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-my_cur = my_cnx.cursor()
-# my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
-my_cur.execute("SELECT * from fruit_load_list")
-# my_data_row = my_cur.fetchone()
-# To get all rows
-my_data_rows = my_cur.fetchall()
-# streamlit.text("Hello from Snowflake:")
-streamlit.header("Fruit load list contains:")
-streamlit.dataframe(my_data_rows)
+# # Connecting snowflake
+# my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+# my_cur = my_cnx.cursor()
+# # my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
+# my_cur.execute("SELECT * from fruit_load_list")
+# # my_data_row = my_cur.fetchone()
+# # To get all rows
+# my_data_rows = my_cur.fetchall()
+# # streamlit.text("Hello from Snowflake:")
+# streamlit.header("Fruit load list contains:")
+# streamlit.dataframe(my_data_rows)
 
+# Creating function for 73 - 83
+streamlit.header("Fruit load list contains:")
+def get_fruit_load_list():
+  with my_cnx.cursor() as my_cur:
+    my_cur.execute("SELECT * from fruit_load_list")
+    return my_cur.fetchall()
+  
+# Add button to load teh fruit
+if streamlit.button('Get Fruit Load List'):
+  my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+  my_data_rows = get_fruit_load_list()
+  streamlit.dataframe(my_data_rows)
+  
 # If this doesn't return 'banana', try changing the select statement to:  
 
 # select * from pc_rivery_db.public.fruit_load_list
