@@ -56,5 +56,9 @@ my_cur = my_cnx.cursor()
 my_cur.execute("SELECT * from fruit_load_list")
 my_data_row = my_cur.fetchone()
 # streamlit.text("Hello from Snowflake:")
-streamlit.text("Fruit load list contains:")
-streamlit.text(my_data_row)
+streamlit.header("Fruit load list contains:")
+streamlit.dataframe(my_data_row)
+
+# If this doesn't return 'banana', try changing the select statement to:  
+
+# select * from pc_rivery_db.public.fruit_load_list
