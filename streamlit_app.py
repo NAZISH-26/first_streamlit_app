@@ -51,8 +51,8 @@ streamlit.dataframe(fruits_to_show)
 # Using try and except for the above code 41 - 50 and creating function
 def get_fruityvice_data(this_fruit_choice):
   fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + this_fruit_choice)
-    fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
-    return fruityvice_normalized
+  fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
+  return fruityvice_normalized
 # Display fruityvice api response
 streamlit.header("Fruityvice Fruit Advice!")
 
