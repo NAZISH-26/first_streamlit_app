@@ -98,7 +98,7 @@ if streamlit.button('Get Fruit Load List'):
 # If this doesn't return 'banana', try changing the select statement to:  
 
 # select * from pc_rivery_db.public.fruit_load_list
-
+streamlit.stop()
 add_my_fruit = streamlit.text_input('What fruit would you like to add?','jackfruit')
 streamlit.write('Thanks for adding ', add_my_fruit)
 my_cur.execute("insert into fruit_load_list values ('from streamlit')")
