@@ -65,5 +65,6 @@ streamlit.dataframe(my_data_rows)
 
 # select * from pc_rivery_db.public.fruit_load_list
 
-fruit_choice = streamlit.text_input('What fruit would you like to add?','jackfruit')
-streamlit.write('Thanks for adding ', fruit_choice)
+add_my_fruit = streamlit.text_input('What fruit would you like to add?','jackfruit')
+streamlit.write('Thanks for adding ', add_my_fruit)
+my_cur.execute("insert into fruit_load_list values ('from streamlit')")
