@@ -64,3 +64,6 @@ streamlit.dataframe(my_data_rows)
 # If this doesn't return 'banana', try changing the select statement to:  
 
 # select * from pc_rivery_db.public.fruit_load_list
+
+fruit_choice = streamlit.text_input('What fruit would you like to add?','jackfruit')
+streamlit.write('Thanks for adding ', fruit_choice)
